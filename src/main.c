@@ -175,6 +175,12 @@ int main()
         }
         input[s] = '\0';
 
+        if (s > 0 && input[s - 1] == '\r')
+        {
+            input[s - 1] = '\0';
+            s--;
+        }
+
         if (exit_flag == 1)
         {
             break;

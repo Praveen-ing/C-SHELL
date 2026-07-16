@@ -26,21 +26,33 @@ void replace_alias(char *input, char *name, char *output)
         int flag = 1;
         while (fgets(line, sizeof(line), file) != NULL)
         {
-            if (strcmp(line, "\n") != 0 || line == NULL)
+            int len = strlen(line);
+            while (len > 0 && (line[len - 1] == '\n' || line[len - 1] == '\r'))
             {
-                char *saveptr;
-                char *temp = strtok_r(line, "=", &saveptr);
-                strcpy(x, temp);
-                temp = strtok_r(NULL, "=", &saveptr);
-                strcpy(y, temp);
-                x = remove_space(x);
-                x = end_space(x);
-                y = remove_space(y);
-                y = end_space(y);
-                if (y[strlen(y) - 1] == '\n')
-                {
-                    y[strlen(y) - 1] = '\0';
-                }
+                line[len - 1] = '\0';
+                len--;
+            }
+            if (len == 0)
+            {
+                continue;
+            }
+            char *saveptr;
+            char *temp = strtok_r(line, "=", &saveptr);
+            if (temp == NULL)
+            {
+                continue;
+            }
+            strcpy(x, temp);
+            temp = strtok_r(NULL, "=", &saveptr);
+            if (temp == NULL)
+            {
+                continue;
+            }
+            strcpy(y, temp);
+            x = remove_space(x);
+            x = end_space(x);
+            y = remove_space(y);
+            y = end_space(y);
                 
                 if (strcmp(token, x) == 0)
                 {
@@ -55,7 +67,6 @@ void replace_alias(char *input, char *name, char *output)
                     strcat(output, " ");
                     break;
                 }
-            }
         }
 
         if (flag != 0)

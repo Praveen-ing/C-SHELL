@@ -1,0 +1,9 @@
+# Build artifacts
+cshell
+a.out
+*.o
+
+# Dynamic files
+history.txt
+history.txt.tmp
+*~
