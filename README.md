@@ -227,7 +227,7 @@ make
 
 ### Manual Compilation
 ```bash
-gcc -o cshell main.c execute.c hop.c reveal.c log.c proclore.c seek.c activities.c signals.c fg_bg.c neonate.c iMan.c pipes.c redirection.c token.c queue.c display.c -lm
+gcc -o cshell src/*.c -Iinclude -lm
 ```
 
 
@@ -235,38 +235,40 @@ gcc -o cshell main.c execute.c hop.c reveal.c log.c proclore.c seek.c activities
 
 ```
 cshell/
-├── main.c              # Main shell loop and initialization
-├── execute.c           # Command execution logic
-├── execute.h           # Execution function declarations
-├── hop.c               # Directory navigation implementation
-├── hop.h               # Hop function declarations
-├── reveal.c            # Directory listing implementation
-├── reveal.h            # Reveal function declarations
-├── proclore.c          # Process information display
-├── proclore.h          # Proclore function declarations
-├── seek.c              # File search implementation
-├── seek.h              # Seek function declarations
-├── activities.c        # Background process management
-├── activities.h        # Activities function declarations
-├── signals.c           # Signal handling implementation
-├── signals.h           # Signal handling declarations
-├── fg_bg.c             # Foreground/background job control
-├── fg_bg.h             # Job control declarations
-├── neonate.c           # Newborn process information
-├── neonate.h           # Neonate function declarations
-├── iMan.c              # Manual page fetcher
-├── iMan.h              # iMan function declarations
-├── pipes.c             # Pipe implementation
-├── pipes.h             # Pipe function declarations
-├── redirection.c       # I/O redirection implementation
-├── redirection.h       # Redirection function declarations
-├── token.c             # Command tokenization
-├── token.h             # Tokenization declarations
-├── queue.c             # Queue data structure for processes
-├── queue.h             # Queue declarations
-├── display.c           # Display and formatting utilities
-├── display.h           # Display function declarations
-├── history.txt         # Command history storage
+├── src/                # C source files
+│   ├── main.c          # Main shell loop and initialization
+│   ├── execute.c       # Command execution logic
+│   ├── hop.c           # Directory navigation implementation
+│   ├── reveal.c        # Directory listing implementation
+│   ├── proclore.c      # Process information display
+│   ├── seek.c          # File search implementation
+│   ├── activities.c    # Background process management
+│   ├── signals.c       # Signal handling implementation
+│   ├── fg_bg.c         # Foreground/background job control
+│   ├── neonate.c       # Newborn process information
+│   ├── iMan.c          # Manual page fetcher
+│   ├── pipes.c         # Pipe implementation
+│   ├── redirection.c   # I/O redirection implementation
+│   ├── token.c         # Command tokenization
+│   ├── queue.c         # Queue data structure for processes
+│   └── display.c       # Display and formatting utilities
+├── include/            # Header files
+│   ├── execute.h
+│   ├── hop.h
+│   ├── reveal.h
+│   ├── proclore.h
+│   ├── seek.h
+│   ├── activities.h
+│   ├── signals.h
+│   ├── fg_bg.h
+│   ├── neonate.h
+│   ├── iMan.h
+│   ├── pipes.h
+│   ├── redirection.h
+│   ├── token.h
+│   ├── queue.h
+│   └── display.h
+├── .gitignore          # Files to ignore in git commits
 ├── .myshrc             # Shell configuration file
 ├── makefile            # Build configuration
 └── README.md           # This file
